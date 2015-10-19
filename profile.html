@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>SwinEDC - Profile</title>
+    <meta name="description" content="SwinEDC">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        ul{
+            list-style-type: none;
+            overflow: hidden;
+        }
+        ul > li{
+            float: left;
+
+        }
+        ul > li > a{
+            display: block;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <nav>
+        <h1>SwinEDC</h1>
+        <ul>
+            <li><a href="about.html">About</a> </li>
+            <li><a href="help.html">Help</a> </li>
+            <li><a href="register.html">Register</a> </li>
+            <li><a href="login.html">Login</a> </li>
+
+        </ul>
+    </nav>
+
+    <div class="content" style="overflow: auto">
+
+        <div class="details">
+            <h3>Contact details</h3>
+
+            <form id="form1">
+                First name: <br>
+                <input type="text" name="firstname" id="firstname"><br>
+
+                Last name: <br>
+                <input type="text" name="lastname" id="lastname"><br>
+
+                Username: <br>
+                <input type="text" name="username" id="username"><br>
+
+                Password: <br>
+                <input type="text" name="password" id="password"><br>
+
+                Address: <br>
+                <input type="text" name="address" id="address"><br>
+
+                Personal description: <br>
+               <textarea rows="4" cols="50" id="pdesc"></textarea><br>
+
+                <button type="button" form="form1" id="savebtndetails">Save</button>
+
+            </form>
+
+        </div>
+        <br>
+        <p id="inforesult"></p>
+        <br>
+
+        <div class="course">
+            <h3>Course information</h3>
+
+            <form id="form2">
+                Course name: <br>
+                <input type="text" name="coursename" id="coursename"><br>
+
+                Year started: <br>
+                <input type="text" name="year" id="year"><br>
+                <br>
+                <button type="button" form="form2" id="savebtncourse">Save</button>
+            </form>
+
+
+        </div>
+
+        <br>
+        <p id = "coresult"></p>
+
+    </div>
+
+
+    <script>
+        $("#savebtndetails").click(function(){
+            var first = $('#firstname').val();
+            var last = $("#lastname").val();
+            var user = $("#username").val();
+            var pass = $("#password").val();
+            var addy = $("#address").val();
+            var pdesc = $("#pdesc").val();
+            var type = "1";
+            $.ajax({
+                type:"POST",
+                url:"profile.php",
+                data:{  type:type,
+                        first:first,
+                        last:last,
+                        user:user,
+                        pass:pass,
+                        addy:addy,
+                        pdesc:pdesc
+                },
+                success:function(data){
+                    $("#inforesult").text(data);
+                },
+                error:function(){
+                   alert("Something went wrong, please try again later");
+                },
+                done:function(){
+
+                }
+            })
+        });
+        $("#savebtndetails").click(function(){
+
+            var course = $('#coursename').val();
+            var year = $("#year").val();
+            var type = "2";
+            $.ajax({
+                type:"POST",
+                url:"profile.php",
+                data:{  type:type,
+                        course:course,
+                        year:year
+                },
+                success:function(data){
+                    $("#coresult").text(data);
+                },
+                error:function(){
+                   alert("Something went wrong, please try again later");
+                },
+                done:function(){
+
+                }
+            })
+        });
+
+
+    </script>
+</body>
+</html>
