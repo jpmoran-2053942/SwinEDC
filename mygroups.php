@@ -22,35 +22,52 @@
 	//Select the database for the connection
 	@mysqli_select_db($connection, $database) or die ("Database not available");
 	
-	//Create the query and receiving variable for select statement
-		$query = "select * from Groups where SID='$sid' " ;
+		//Create query for finding the groups the student is a member of
+		$query = "select * from Groups where SID='$sid' ";
 		$results = mysqli_query($connection, $query);
-
+		
 		//Check to see if any groups matching the criteria exist
 		if (mysqli_num_rows($results) == 0)
 		{
 			echo "You do not belong to any groups";
 		}
 		
-		if (mysqli_num_rows($results) >= 1)
-		{
-		
-			$row = mysqli_fetch_row($results);
-			//Create table
-			echo "<table width='100%' border='1'>" ;
-			echo "<th>Group Number</th><th>Subject Name</th><th>Unit Code</th><th>Semester</th><th>Year</th><th>Target Grade</th>";
+		if (mysqli_num_rows($results) >= 1 ) {
+			$rows = mysqli_fetch_row($results);
 			
-			//Populate the table with values from the Groups table
-			while ($row)
+			
+			//loop through the result of group numbers to display all members
+			while($rows) 
 			{
-				echo "<tr><td>{$row[1]}</td>";
-				echo "<td>{$row[2]}</td>";
-				echo "<td>{$row[3]}</td>";
-				echo "<td>{$row[4]}</td>";
-				echo "<td>{$row[5]}</td>";
-				echo "<td>{$row[6]}</td></tr>";
-				$row = mysqli_fetch_row($results);
+		
+				//Create the query and receiving variable for select statement
+				$query1 = "select * from Groups where GNo={$rows[1]} " ;
+				$results1 = mysqli_query($connection, $query1);
+				
+				if (mysqli_num_rows($results1) >= 1)
+				{
+				
+					$row = mysqli_fetch_row($results1);
+					
+					//Create table
+					echo "<table width='100%' border='1'>" ;
+					echo "<th>Group Number</th><th>Subject Name</th><th>Unit Code</th><th>Semester</th><th>Year</th><th>Target Grade</th><th>User Name</th>";
+					
+					//Populate the table with values from the Groups table
+					while ($row)
+					{
+						echo "<tr><td>{$row[1]}</td>";
+						echo "<td>{$row[2]}</td>";
+						echo "<td>{$row[3]}</td>";
+						echo "<td>{$row[4]}</td>";
+						echo "<td>{$row[5]}</td>";
+						echo "<td>{$row[6]}</td>";
+						echo "<td>{$row[8]}</td></tr>";
+						$row = mysqli_fetch_row($results1);
+					}
+					echo "</table><br>";
+				}
+				$rows = mysqli_fetch_row($results);
 			}
-			echo "</table>";
 		}
 ?>
