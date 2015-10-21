@@ -1,8 +1,41 @@
 <html>
 	<head>
 		<title>My Groups</title>
+        <style>
+            .navbar{
+                position: absolute;
+                right: 0;
+                margin-top: 18px;
+            }
+            .navigationitems{
+                list-style-type: none;
+                margin : 0;
+                padding : 0;
+                overflow: hidden;
+            }
+            .navigationitems > li{
+                float: right;
+            }
+            .navigationitems > li > a{
+                display: block;
+                padding-right: 10px;
+            }
+        </style>
 	</head>
 <body>
+<nav>
+    <h1 style="float: left">SwinEDC</h1>
+    <div class="navbar">
+        <ul class="navigationitems">
+            <li><a href="help.html">Help</a> </li>
+            <li><a href="mygroups.php">My groups</li>
+            <li><a href="profile.html">Profile</a> </li>
+            <li><a href="search.php">Search</a> </li>
+            <li><a href="home.html">Home</a> </li>
+        </ul>
+    </div>
+</nav>
+
 	<h1>My Groups</h1>
 	<p>Below is a list of all the groups that you are currently a member of</p>
 </body>

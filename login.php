@@ -8,10 +8,41 @@
 	<meta name="updated" content="14/10/15"/>
 	<!-- Need style sheet reference -->
 	<title>SwinEDC</title>
+
+    <style>
+        .navbar{
+            position: absolute;
+            right: 0;
+            margin-top: 18px;
+        }
+        .navigationitems{
+            list-style-type: none;
+            margin : 0;
+            padding : 0;
+            overflow: hidden;
+        }
+        .navigationitems > li{
+            float: right;
+        }
+        .navigationitems > li > a{
+            display: block;
+            padding-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
-	<!-- Header php reference -->
+<nav>
+    <h1 style="float: left">SwinEDC</h1>
+    <div class="navbar">
+        <ul class="navigationitems">
+            <li><a href="help.html">Help</a> </li>
+            <li><a href="register.php">Register</a> </li>
+            <li><a href="login.php">Login</a> </li>
+            <li><a href="home.html">Home</a> </li>
+        </ul>
+    </div>
+</nav>
 
 	<div id="main">
 		
