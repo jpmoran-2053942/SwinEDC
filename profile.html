@@ -54,16 +54,13 @@
                 Password: <br>
                 <input type="text" name="password" id="password"><br>
 
-                Address: <br>
-                <input type="text" name="address" id="address"><br>
-
                 Personal description: <br>
-               <textarea rows="4" cols="50" id="pdesc"></textarea><br>
+                <textarea rows="4" cols="50" id="pdesc"></textarea><br>
 
-                <button type="button" form="form1" id="savebtndetails">Save</button>
+
 
             </form>
-
+            <button type="button"id="savebtndetails">Save</button>
         </div>
         <br>
         <p id="inforesult"></p>
@@ -79,10 +76,10 @@
                 Year started: <br>
                 <input type="text" name="year" id="year"><br>
                 <br>
-                <button type="button" form="form2" id="savebtncourse">Save</button>
+
             </form>
 
-
+            <button type="button"id="savebtncourse">Save</button>
         </div>
 
         <br>
@@ -97,7 +94,7 @@
             var last = $("#lastname").val();
             var user = $("#username").val();
             var pass = $("#password").val();
-            var addy = $("#address").val();
+
             var pdesc = $("#pdesc").val();
             var type = "1";
             $.ajax({
@@ -108,7 +105,6 @@
                         last:last,
                         user:user,
                         pass:pass,
-                        addy:addy,
                         pdesc:pdesc
                 },
                 success:function(data){
@@ -122,7 +118,7 @@
                 }
             })
         });
-        $("#savebtndetails").click(function(){
+        $("#savebtncourse").click(function(){
 
             var course = $('#coursename').val();
             var year = $("#year").val();
