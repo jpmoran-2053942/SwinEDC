@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8"/>
-	<meta name="description" content="SwinEDC"/>
-	<meta name="keywords" content=""/>
-	<meta name="author" content="James Moran"/>
-	<meta name="updated" content="14/10/15"/>
-	<!-- Need style sheet reference -->
-	<title>SwinEDC</title>
+    <title>SwinEDC - Log in</title>
+    <meta name="description" content="This is the log in page for SwinEDC, you need your username
+    and password to log in successfully">
+    <meta name="keywords" content="SwinEDC, Swinburne, University of technology, SwinEDC log in,
+    , Swinburne hawthorn, team, Swinteam, EDC, Akmal, Robyn, Jame">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="period">
+    <meta name="language" content="English">
+    <meta name="author" content="Robyn, James and Akmal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="updated" content="21/10/2015">
 
     <style>
         .navbar{

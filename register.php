@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8"/>
-	<meta name="description" content="SwinEDC"/>
-	<meta name="keywords" content=""/>
-	<meta name="author" content="James Moran"/>
-	<meta name="updated" content="14/10/15"/>
+    <title>SwinEDC - Register</title>
+    <meta name="description" content="This is the registration page for a new user, you must input
+    all the data required to register. After registration you can log into SwinEDC">
+    <meta name="keywords" content="SwinEDC, Swinburne, University of technology, Swinburne register, Swinburne hawthorn, team, Swinteam, EDC, Akmal, Robyn, Jame">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="period">
+    <meta name="language" content="English">
+    <meta name="author" content="Robyn, James and Akmal">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="updated" content="21/10/2015">
 	<!-- Need style sheet reference -->
 	<script src="resources/script/register.js"></script>
 	<title>SwinEDC</title>

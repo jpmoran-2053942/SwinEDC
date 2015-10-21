@@ -1,6 +1,17 @@
 <html>
 	<head>
-		<title>My Groups</title>
+        <meta charset="UTF-8">
+        <title>SwinEDC - My groups</title>
+        <meta name="description" content="This page depicts the groups you are a member of and the teams
+        you have created">
+        <meta name="keywords" content="SwinEDC, Swinburne, University of technology, SwinEDC groups,
+        SwinEDC my, Swinburne hawthorn, team, Swinteam, EDC, Akmal, Robyn, Jame">
+        <meta name="robots" content="index, follow">
+        <meta name="revisit-after" content="period">
+        <meta name="language" content="English">
+        <meta name="author" content="Robyn, James and Akmal">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="updated" content="21/10/2015">
         <style>
             .navbar{
                 position: absolute;

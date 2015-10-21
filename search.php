@@ -1,6 +1,18 @@
 <html>
 	<head>
-		<title>Search Groups</title>
+        <meta charset="UTF-8">
+        <title>SwinEDC - Search groups</title>
+        <meta name="description" content="This page allows you to search for groups. You can search
+        the current semester groups in a peticular subject as well as the next semester groups">
+        <meta name="keywords" content="SwinEDC, Swinburne, University of technology, SwinEDC groups,
+         Swinburne hawthorn, team, Swinteam, EDC, Akmal, Robyn, Jame">
+        <meta name="robots" content="index, follow">
+        <meta name="revisit-after" content="period">
+        <meta name="language" content="English">
+        <meta name="author" content="Robyn, James and Akmal">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="updated" content="21/10/2015">
+
         <style>
             .navbar{
                 position: absolute;
