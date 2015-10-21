@@ -22,12 +22,14 @@ function contactdetails(){
     $password = $_POST['pass'];
     $pdesc = $_POST['pdesc'];
 
+    $result = "Your changes were saved successfully, ";
     $sql = "UPDATE user SET";
     if($firstname != ""){
+        $result = $result. " First name - $firstname";
         $sql = $sql." firstname = $firstname";
     }
     if($lastname != ""){
-
+        $result = $result.", Last name - $lastname";
         if($firstname != ""){
             $sql = $sql.", surname = $lastname";
         }else{
@@ -37,6 +39,7 @@ function contactdetails(){
     }
 
     if($username != ""){
+        $result = $result. ", User name - $username";
         if($lastname != ""){
         //    $sql = $sql.", username = $username";
         }else{
@@ -45,6 +48,7 @@ function contactdetails(){
     }
 
     if($password != ""){
+        $result = $result. ", Password - $password";
         if($username != ""){
             $sql = $sql.", password = $password";
         }else{
@@ -53,6 +57,7 @@ function contactdetails(){
     }
 
     if($pdesc != ""){
+        $result = $result. ", Description - $pdesc";
         if($password != ""){
             $sql = $sql.", personal = $pdesc";
         }else{
@@ -68,12 +73,14 @@ function contactdetails(){
     $conn = @mysqli_connect("fdb14.biz.nf", "1971863_student","swinedc123","1971863_student");
     ​
     if(!$conn){
-        die("Cannot connect to database, please try again later");
+        die("Something went wrong, please try again later");
     }else{
 
-        $result = $conn->query($sql);
-        if($result == TRUE){
-            echo "Update successful";
+        $resultq = $conn->query($sql);
+        if($resultq == TRUE){
+            echo $result;
+        }else{
+            echo "Something went wrong, please try again later";
         }
     }
 
@@ -84,14 +91,17 @@ function courseinfo(){
 
     $coname = $_POST['pass'];
     $year = $_POST['pdesc'];
+    $result = "Your changes were saved successfully ";
 
     $sql = "UPDATE user SET";
     if($coname != ""){
+        $result = $result. ", Course name - $coname";
         $sql = $sql." course = $coname";
     }
-    if(year != ""){
-
-        if(year != ""){
+    if($year != ""){
+        $result = $result. ", Year started - $year";
+        $year = $year. " 00:00:00";
+        if($year != ""){
             $sql = $sql.", year = $year";
         }else{
             $sql = $sql."year = $year";
@@ -109,12 +119,14 @@ function courseinfo(){
     $conn = @mysqli_connect("fdb14.biz.nf", "1971863_student","swinedc123","1971863_student");
     ​
     if(!$conn){
-        die("Cannot connect to database, try again later");
+        die("Something went wrong, please try again later");
     }else{
 
         $result = $conn->query($sql);
         if($result == TRUE){
             echo "Update successful";
+        }else{
+            echo "Something went wrong, please try again later";
         }
     }
 

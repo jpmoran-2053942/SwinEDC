@@ -122,6 +122,7 @@
 
             var course = $('#coursename').val();
             var year = $("#year").val();
+            $.trim(year);
             var type = "2";
             $.ajax({
                 type:"POST",
