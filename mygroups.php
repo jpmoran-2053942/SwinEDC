@@ -36,7 +36,11 @@
         </ul>
     </div>
 </nav>
-
+<br>
+<br>
+<br>
+<br>
+<br>
 	<h1>My Groups</h1>
 	<p>Below is a list of all the groups that you are currently a member of</p>
 </body>
