@@ -1,68 +1,39 @@
 <html>
 	<head>
-        <meta charset="UTF-8">
-        <title>SwinEDC - Search groups</title>
-        <meta name="description" content="This page allows you to search for groups. You can search
-        the current semester groups in a peticular subject as well as the next semester groups">
-        <meta name="keywords" content="SwinEDC, Swinburne, University of technology, SwinEDC groups,
-         Swinburne hawthorn, team, Swinteam, EDC, Akmal, Robyn, Jame">
-        <meta name="robots" content="index, follow">
-        <meta name="revisit-after" content="period">
-        <meta name="language" content="English">
-        <meta name="author" content="Robyn, James and Akmal">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="updated" content="21/10/2015">
-
-        <style>
-            .navbar{
-                position: absolute;
-                right: 0;
-                margin-top: 18px;
-            }
-            .navigationitems{
-                list-style-type: none;
-                margin : 0;
-                padding : 0;
-                overflow: hidden;
-            }
-            .navigationitems > li{
-                float: right;
-            }
-            .navigationitems > li > a{
-                display: block;
-                padding-right: 10px;
-            }
-            #footer { width: 100%; overflow: hidden; }
-            #footer ul { list-style: none; position: relative; float: left; display: block; left: 45%; }
-            #footer ul li { position: relative; float: left; display: block; right: 50%; }
-            #footer ul li a {padding-right: 10px;}
-        </style>
+		<title>Search Groups</title>
 	</head>
 <body>
-<nav>
-    <h1 style="float: left">SwinEDC</h1>
-    <div class="navbar">
-        <ul class="navigationitems">
-            <li><a href="help.html">Help</a> </li>
-            <li><a href="mygroups.php">My groups</li>
-            <li><a href="profile.html">Profile</a> </li>
-            <li><a href="search.php">Search</a> </li>
-            <li><a href="home.html">Home</a> </li>
-        </ul>
-    </div>
-</nav>
-
-<br>
-<br>
-<br>
-<br>
-<br>
 	<h1>Search Groups</h1>
 	<form method="get">
 		<fieldset>
 			<legend>Fill in the fields below to search for a group</legend>
-				<label>Subject Name:<input type="text" name="subjectname"></label><br>
-				<label>Unit Code:<input type="text" name="unitcode"></label><br>
+				<label>Unit Code:
+				<?php
+				//Initialise variables for database connection
+				$host = "fdb14.biz.nf";
+				$user = "1971863_student";
+				$password = "swinedc123";
+				$database = "1971863_student";
+					
+				//Create database connection
+				$conn = mysqli_connect($host, $user, $password) or die ("Failed to connect to the server");
+				//Select the database for the connection
+				@mysqli_select_db($conn, $database) or die ("Database not available");
+				
+				//This select dropdown needs to be populated by the Unit table so students can select valid units to create groups for
+				$units = "select * from Unit";
+				$res = mysqli_query($conn, $units);
+				echo "<select name= 'unitcode'>";
+				$row = mysqli_fetch_row($res);
+				print_r($row);
+				while ($row)
+				{
+				echo "<option value={$row[0]}>";
+				echo "{$row[0]}</option>";
+				$row = mysqli_fetch_row($res);
+				}
+				echo "</select><br>";
+				?>
 				<label>Semester:
 				<select name="semester">
 					<option value="1">1</option>
@@ -90,32 +61,11 @@
 		<p>If your search doesn't return what you are looking for, click the button below to create your own group!</p>
 		<input type="submit" name="create" value="Create Group">
 	</form>
-
-
-<footer style="position: absolute;bottom: 0;width: 100%">
-    <div id="footer" style="text-align: center">
-        <p><b>SwinEDC &copy; is created by Robyn, James and Akmal</b></p>
-
-        <div id="footer">
-            <ul >
-                <li><a href="help.html">Help</a> </li>
-                <li><a href="mygroups.php">My groups</li>
-                <li><a href="profile.html">Profile</a> </li>
-                <li><a href="search.php">Search</a> </li>
-                <li><a href="home.html">Home</a> </li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-</footer>
 </body>
 </html>
 
 <?php
-if (isset($_GET['subjectname']) && isset($_GET['unitcode']) && isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade']))
+if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade']))
 {
 	
 	$subjectname = $_GET['subjectname'];
@@ -190,8 +140,15 @@ if (isset($_GET['subjectname']) && isset($_GET['unitcode']) && isset($_GET['seme
 		if (mysqli_num_rows($results) == 0)
 		{
 			$gid = $username . $unitcode;
+			
+			//Get the unit name for the subject code selected
+			//This comes from the Unit table
+			$namequery = "select Title from Unit where UnitID = '$unitcode'";
+			$result = mysqli_query($connection, $namequery);
+			$row = mysqli_fetch_row($result);
+			
 			$insertquery = "insert into Groups (GID, SubjectName, UnitCode, Semester, Year, TargetGrade, Username, Admin) 
-			values('$gid', '$subjectname', '$unitcode', '$semester', '$year', '$targetgrade', '$username', 'Y')";
+			values('$gid', '$row[0]', '$unitcode', '$semester', '$year', '$targetgrade', '$username', 'Y')";
 			$insertresults = mysqli_query($connection, $insertquery);
 			if (!$insertresults)
 			{
