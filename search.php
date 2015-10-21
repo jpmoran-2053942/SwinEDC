@@ -123,7 +123,7 @@ if (isset($_GET['subjectname']) && isset($_GET['unitcode']) && isset($_GET['seme
 	$semester = $_GET['semester'];
 	$year = $_GET['year'];
 	$targetgrade = $_GET['targetgrade'];
-	$sid = 4931645;
+	$username = abcd1234;
 	
 	//Initialise variables for database connection
 	$host = "fdb14.biz.nf";
@@ -177,7 +177,7 @@ if (isset($_GET['subjectname']) && isset($_GET['unitcode']) && isset($_GET['seme
 	{
 		
 		//Create the query and receiving variable for select statement
-		$query = "select * from Groups where SID='$sid' and UnitCode='$unitcode'" ;
+		$query = "select * from Groups where Username='$username' and UnitCode='$unitcode'" ;
 		$results = mysqli_query($connection, $query);
 		
 		//Check to see if student is already a member of a group for that unit code
@@ -189,18 +189,18 @@ if (isset($_GET['subjectname']) && isset($_GET['unitcode']) && isset($_GET['seme
 		//If student is not already a member of a group for a specific unit code, create a new group
 		if (mysqli_num_rows($results) == 0)
 		{
-			$gid = $sid . $unitcode;
-			$insertquery = "insert into Groups (GID, SubjectName, UnitCode, Semester, Year, TargetGrade, SID, Admin) 
-			values('$gid', '$subjectname', '$unitcode', '$semester', '$year', '$targetgrade', '$sid', 'Y')";
+			$gid = $username . $unitcode;
+			$insertquery = "insert into Groups (GID, SubjectName, UnitCode, Semester, Year, TargetGrade, Username, Admin) 
+			values('$gid', '$subjectname', '$unitcode', '$semester', '$year', '$targetgrade', '$username', 'Y')";
 			$insertresults = mysqli_query($connection, $insertquery);
 			if (!$insertresults)
 			{
 				echo "Error creating group";
 			}
-			/*//Redirect to Booking.php after inserting data to database
-			header("refresh:5; url=Booking.php"); 
-			echo "You will be redirected to the booking page in about 5 secs";
-			die();*/
+			else 
+			{
+				echo "Group successfully created. You can view this group and your members from the mygroups page";
+			}
 		}
 	}
 }
