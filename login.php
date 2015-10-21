@@ -33,6 +33,10 @@
             display: block;
             padding-right: 10px;
         }
+        #footer { width: 100%; overflow: hidden; }
+        #footer ul { list-style: none; position: relative; float: left; display: block; left: 45%; }
+        #footer ul li { position: relative; float: left; display: block; right: 50%; }
+        #footer ul li a {padding-right: 10px;}
     </style>
 
 </head>
@@ -86,7 +90,24 @@
 			</form>
 		</section>
 	</div>
-	
-	<!-- Footer php reference -->
+
+<footer style="position: absolute;bottom: 0;width: 100%">
+    <div id="footer" style="text-align: center">
+        <p><b>SwinEDC &copy; is created by Robyn, James and Akmal</b></p>
+
+        <div id="footer">
+            <ul >
+                <li><a href="help.html">Help</a> </li>
+                <li><a href="register.php">Register</a> </li>
+                <li><a href="login.php">Login</a> </li>
+                <li><a href="home.html">Home</a> </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+</footer>
 </body>
 </html>

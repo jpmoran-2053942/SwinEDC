@@ -31,6 +31,10 @@
                 display: block;
                 padding-right: 10px;
             }
+            #footer { width: 100%; overflow: hidden; }
+            #footer ul { list-style: none; position: relative; float: left; display: block; left: 45%; }
+            #footer ul li { position: relative; float: left; display: block; right: 50%; }
+            #footer ul li a {padding-right: 10px;}
         </style>
         
 	</head>
@@ -54,6 +58,26 @@
 <br>
 	<h1>My Groups</h1>
 	<p>Below is a list of all the groups that you are currently a member of</p>
+
+<footer style="position: absolute;bottom: 0;width: 100%">
+    <div id="footer" style="text-align: center">
+        <p><b>SwinEDC &copy; is created by Robyn, James and Akmal</b></p>
+
+        <div id="footer">
+            <ul >
+                <li><a href="help.html">Help</a> </li>
+                <li><a href="mygroups.php">My groups</li>
+                <li><a href="profile.html">Profile</a> </li>
+                <li><a href="search.php">Search</a> </li>
+                <li><a href="home.html">Home</a> </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+</footer>
 </body>
 </html>
 
