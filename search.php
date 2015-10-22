@@ -67,13 +67,12 @@
 <?php
 if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade']))
 {
-	
-	$subjectname = $_GET['subjectname'];
+	$groups = array();
 	$unitcode = $_GET['unitcode'];
 	$semester = $_GET['semester'];
 	$year = $_GET['year'];
 	$targetgrade = $_GET['targetgrade'];
-	$username = abcd1234;
+	$username = test;
 	
 	//Initialise variables for database connection
 	$host = "fdb14.biz.nf";
@@ -90,7 +89,7 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 	{
 		
 		//Create the query and receiving variable for select statement
-		$query = "select * from Groups where SubjectName='$subjectname' and UnitCode='$unitcode' and Semester='$semester' and Year='$year' and TargetGrade='$targetgrade' " ;
+		$query = "select * from Groups where UnitCode='$unitcode' and Semester='$semester' and Year='$year' and TargetGrade='$targetgrade' and Admin='Y' " ;
 		$results = mysqli_query($connection, $query);
 
 		//Check to see if any groups matching the criteria exist
@@ -116,10 +115,12 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 				echo "<td>{$row[4]}</td>";
 				echo "<td>{$row[5]}</td>";
 				echo "<td>{$row[6]}</td>";
-				echo "<td><input type='submit' name={$row[0]} value='Join'></td></tr>";
+				echo "<td><form method='post'><input type='submit' name='{$row[1]}' value='Join Group {$row[1]}'></form></td></tr>";
+				$groups[] = $row[1];
+				
 				$row = mysqli_fetch_row($results);
 			}
-			echo "</table>";
+			echo "</table></form>";
 		}
 	}
 	
@@ -160,7 +161,39 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 			}
 		}
 	}
+	
+	//This loop iterates through the lowest group number in the db to the highest
+	for($i = min($groups); $i <= max($groups); $i++)
+	{
+		//This is seeing which group number's "Join" button was clicked as each as a unique name corresponding to group number
+		if(isset($_POST[$i]))
+		{
+			//This select query returns the specific group information so a user can be added
+			$gquery = "select * from Groups where GNo = '$i' ";
+			$gres = mysqli_query($connection, $gquery);
+			$grows = mysqli_fetch_row($gres);
+
+			$gid = $username. $unitcode;
+			
+			//Insert query for inserting a new student into an existing group
+			$joinquery = "insert into Groups (GID, GNo, SubjectName, UnitCode, Semester, Year, TargetGrade, Username, Admin)
+			values ('$gid', '$i', '{$grows[2]}', '{$grows[3]}', '{$grows[4]}', '{$grows[5]}', '{$grows[6]}', '$username', 'N')";
+			$joinres = mysqli_query($connection, $joinquery);
+			
+			//Error handling
+			if(!$joinres)
+			{
+				echo mysqli_errno($connection) . ": " . mysqli_error($connection) . "\n";
+				echo "There was an error joining this group. Please try again or contact an administrator";
+			}
+			else
+			{
+				echo "You have successfully joined a group. You can see all your groups on the mygroups page.";
+			}
+		}
+	}
 }
+
 
 
 ?>
