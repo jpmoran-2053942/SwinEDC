@@ -107,23 +107,6 @@
 		</section>
 	</div>
 
-<footer style="position: absolute;bottom: 0;width: 100%">
-    <div id="footer" style="text-align: center">
-        <p><b>SwinEDC &copy; is created by Robyn, James and Akmal</b></p>
 
-        <div id="footer">
-            <ul >
-                <li><a href="help.html">Help</a> </li>
-                <li><a href="register.php">Register</a> </li>
-                <li><a href="login.php">Login</a> </li>
-                <li><a href="home.html">Home</a> </li>
-            </ul>
-
-        </div>
-
-    </div>
-
-
-</footer>
 </body>
 </html>
