@@ -4,7 +4,8 @@
 		return htmlspecialchars(stripslashes(trim($input)));
 	}
 	
-	$username = sanatise_input($_POST["username"]);
+	//Convert username to lowercase only to avoid duplicate keys.
+	$username = strtolower(sanatise_input($_POST["username"]));
 	$password = sanatise_input($_POST["password"]);
 	$fname = sanatise_input($_POST["fname"]);
 	$sname = sanatise_input($_POST["sname"]);

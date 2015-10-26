@@ -14,7 +14,7 @@ function validate(){
 	var result = true;
 	
 	/*get values from the form*/
-	var username = document.getElementById("username").value;
+	var username = document.getElementById("username").value.toLowerCase();
 	var password = document.getElementById("password").value;
 	var password2 = document.getElementById("password2").value;
 	var fname = document.getElementById("fname").value;
