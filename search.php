@@ -38,8 +38,8 @@
 				<select name="semester">
 					<option value="1">1</option>
 					<option value="2">2</option>
-					<option value="summer">Summer</option>
-					<option value="winter">Winter</option>
+					<option value="Summer">Summer</option>
+					<option value="Winter">Winter</option>
 				</select>
 				</label><br>
 				<label>Year:
@@ -74,7 +74,7 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 	$semester = $_GET['semester'];
 	$year = $_GET['year'];
 	$targetgrade = $_GET['targetgrade'];
-	$username = test;
+	$username = rand();
 	
 	//Initialise variables for database connection
 	$host = "fdb14.biz.nf";
@@ -98,9 +98,10 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 		if (mysqli_num_rows($results) == 0)
 		{
 			echo "There are no groups matching your search. Try searching again or create your own group.";
+			die();
 		}
 		
-		if (mysqli_num_rows($results) >= 1)
+		else// (mysqli_num_rows($results) >= 1)
 		{
 		
 			$row = mysqli_fetch_row($results);
@@ -156,10 +157,12 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 			if (!$insertresults)
 			{
 				echo "Error creating group";
+				die();
 			}
 			else 
 			{
 				echo "Group successfully created. You can view this group and your members from the mygroups page";
+				die();
 			}
 		}
 	}
@@ -187,10 +190,12 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 			{
 				echo mysqli_errno($connection) . ": " . mysqli_error($connection) . "\n";
 				echo "There was an error joining this group. Please try again or contact an administrator";
+				die();
 			}
 			else
 			{
 				echo "You have successfully joined a group. You can see all your groups on the mygroups page.";
+				die();
 			}
 		}
 	}

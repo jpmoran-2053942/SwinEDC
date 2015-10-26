@@ -65,7 +65,7 @@
 
 <?php
 
-	$sid = 4931645;
+	$username = 4931645;
 	//Initialise variables for database connection
 	$host = "fdb14.biz.nf";
 	$user = "1971863_student";
@@ -78,7 +78,7 @@
 	@mysqli_select_db($connection, $database) or die ("Database not available");
 	
 		//Create query for finding the groups the student is a member of
-		$query = "select * from Groups where SID='$sid' ";
+		$query = "select * from Groups where Username='$username' ";
 		$results = mysqli_query($connection, $query);
 		
 		//Check to see if any groups matching the criteria exist
