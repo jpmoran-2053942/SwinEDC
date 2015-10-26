@@ -114,8 +114,7 @@
 	</form>
 
 
-</body>
-</html>
+
 
 <?php
 if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade']))
@@ -255,3 +254,26 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 
 
 ?>
+ <footer>
+        <div id="footer" style="text-align: center">
+            <p><b>SwinEDC &copy; is created by Robyn, James and Akmal</b></p>
+
+            <div id="footer">
+                <ul >
+                    <li><a href="help.html">Help</a> </li>
+					<li><a href="mygroups.php">My groups</li>
+					<li><a href="profile.html">Profile</a> </li>
+					<li><a href="search.php">Search</a> </li>
+					<li><a href="home.html">Home</a> </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+		
+
+    </footer>
+
+</body>
+</html>
