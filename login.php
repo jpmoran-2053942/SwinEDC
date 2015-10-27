@@ -13,7 +13,7 @@
     <meta name="author" content="Robyn, James and Akmal">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="updated" content="21/10/2015">
-
+	<link rel="stylesheet" type="text/css" href="style.css">
     <style>
         .navbar{
             position: absolute;

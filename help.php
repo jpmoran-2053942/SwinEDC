@@ -21,7 +21,7 @@ if(isset($_GET['logout']))
     <meta name="language" content="English">
     <meta name="author" content="Robyn, James and Akmal">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="stylesheet" type="text/css" href="style.css">
     <style>
         .navbar{
             position: absolute;

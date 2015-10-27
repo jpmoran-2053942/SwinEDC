@@ -21,7 +21,7 @@ if(isset($_GET['logout']))
     <meta name="language" content="English">
     <meta name="author" content="Robyn, James and Akmal">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	<link rel="stylesheet" type="text/css" href="style.css">
     <style>
         .navbar{
             position: absolute;
@@ -63,11 +63,11 @@ if(isset($_GET['logout']))
 </nav>
 <br>
 <br>
-<h4 style="float: right">User: 
+<h5 style="float: right">User: 
 <?php echo $_SESSION['sessionuser'];
-echo "<form style='float: right'><input type='submit' name='logout' value='Log out'></form>";
+echo "<form style='float: right'><input type='submit' style='width:100%' name='logout' value='Log out'></form>";
 ?>
-</h4>
+</h5>
 
 
 <br>

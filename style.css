@@ -1,0 +1,38 @@
+body {
+background-color : gray;
+}
+
+form {
+background-color: rgb(79,78,81);
+width : 50%;
+border-style :  solid;
+opacity : 0.9;
+}
+
+input {
+margin : 0 auto;
+}
+
+a {
+color : white;
+}
+
+input[type=submit] {
+color : white;
+background-color : black;
+}
+
+tr {
+color : white;
+background-color : black;
+}
+
+td {
+color : black;
+background-color : white;
+}
+
+h5 {
+float : right;
+margin-right : 10px;
+}

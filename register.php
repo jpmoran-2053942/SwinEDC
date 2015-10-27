@@ -14,6 +14,7 @@
     <meta name="updated" content="21/10/2015">
 	<!-- Need style sheet reference -->
 	<script src="resources/script/register.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 
 
 

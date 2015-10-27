@@ -18,6 +18,7 @@ if(isset($_GET['logout']))
     <meta name="author" content="Robyn, James and Akmal">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="updated" content="26/10/2015">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<style>
         .navbar{
             position: absolute;
@@ -59,11 +60,11 @@ if(isset($_GET['logout']))
 </nav>
 <br>
 <br>
-<h4 style="float: right">User: 
+<h5>User: 
 <?php echo $_SESSION['sessionuser'];
-echo "<form style='float: right'><input type='submit' name='logout' value='Log out'></form>";
+echo "<form style='float: right'><input type='submit' style='width:100%' name='logout' value='Log out'></form>";
 ?>
-</h4>
+</h5>
 <br>
 <br>
 <br>
@@ -181,7 +182,7 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 				echo "<td>{$row[4]}</td>";
 				echo "<td>{$row[5]}</td>";
 				echo "<td>{$row[6]}</td>";
-				echo "<td><form method='post'><input type='submit' name='{$row[1]}' value='Join Group {$row[1]}'></form></td></tr>";
+				echo "<td><form method='post' ><input type='submit' style='width:100%' name='{$row[1]}' value='Join Group {$row[1]}'></form></td></tr>";
 				$groups[] = $row[1];
 				
 				$row = mysqli_fetch_row($results);
