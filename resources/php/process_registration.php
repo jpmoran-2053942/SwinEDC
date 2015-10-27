@@ -73,6 +73,7 @@
 	if ($error == "") {
 		//Needs to start login session.
 		header("location:../../registercomplete.php");
+		exit();
 	} else {
 		//Passes the error message as a GET.
 		header("location:../../registererror.php?error=$error");

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_GET['logout']))
+	{
+		unset($_SESSION["sessionuser"]); 
+		header("Location: login.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +61,11 @@
 </nav>
 <br>
 <br>
+<h4 style="float: right">User: 
+<?php echo $_SESSION['sessionuser'];
+echo "<form style='float: right'><input type='submit' name='logout' value='Log out'></form>";
+?>
+</h4>
 <br>
 <br>
 <br>
@@ -72,11 +85,11 @@
 
             <div id="footer">
                 <ul >
-                    <li><a href="help.html">Help</a> </li>
+                    <li><a href="help.php">Help</a> </li>
 					<li><a href="mygroups.php">My groups</li>
 					<li><a href="profile.html">Profile</a> </li>
 					<li><a href="search.php">Search</a> </li>
-					<li><a href="home.html">Home</a> </li>
+					<li><a href="home.php">Home</a> </li>
                 </ul>
 
             </div>

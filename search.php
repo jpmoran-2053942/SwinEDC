@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_GET['logout']))
+	{
+		unset($_SESSION["sessionuser"]); 
+		header("Location: login.php");
+	}
+?>
 <html>
 	<head>
 		<meta charset="utf-8"/>
@@ -51,6 +59,11 @@
 </nav>
 <br>
 <br>
+<h4 style="float: right">User: 
+<?php echo $_SESSION['sessionuser'];
+echo "<form style='float: right'><input type='submit' name='logout' value='Log out'></form>";
+?>
+</h4>
 <br>
 <br>
 <br>
@@ -124,7 +137,7 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 	$semester = $_GET['semester'];
 	$year = $_GET['year'];
 	$targetgrade = $_GET['targetgrade'];
-	$username = rand();
+	$username = $_SESSION['sessionuser'];
 	
 	//Initialise variables for database connection
 	$host = "fdb14.biz.nf";
@@ -188,6 +201,7 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 		if (mysqli_num_rows($results) == 1)
 		{
 			echo "You are already a member of a group for that subject";
+			die();
 		}
 		
 		//If student is not already a member of a group for a specific unit code, create a new group
@@ -211,7 +225,7 @@ if (isset($_GET['semester']) && isset($_GET['year']) && isset($_GET['targetgrade
 			}
 			else 
 			{
-				echo "Group successfully created. You can view this group and your members from the mygroups page";
+				echo "Group successfully created " . $username .". You can view this group and your members from the mygroups page";
 				die();
 			}
 		}

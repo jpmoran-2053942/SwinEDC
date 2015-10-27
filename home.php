@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(isset($_GET['logout']))
+	{
+		unset($_SESSION["sessionuser"]); 
+		header("Location: login.php");
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -46,16 +54,20 @@
     <h1 style="float: left">SwinEDC</h1>
     <div class="navbar">
         <ul class="navigationitems">
-            <li><a href="help.html">Help</a> </li>
+            <li><a href="help.php">Help</a> </li>
             <li><a href="register.php">Register</a> </li>
             <li><a href="login.php">Login</a> </li>
-            <li><a href="home.html">Home</a> </li>
+            <li><a href="home.php">Home</a> </li>
         </ul>
     </div>
 </nav>
 <br>
 <br>
-
+<h4 style="float: right">User: 
+<?php echo $_SESSION['sessionuser'];
+echo "<form style='float: right'><input type='submit' name='logout' value='Log out'></form>";
+?>
+</h4>
 
 
 <br>
@@ -85,10 +97,10 @@
 
             <div id="footer">
                 <ul >
-                    <li><a href="help.html">Help</a> </li>
+                    <li><a href="help.php">Help</a> </li>
                     <li><a href="register.php">Register</a> </li>
                     <li><a href="login.php">Login</a> </li>
-                    <li><a href="home.html">Home</a> </li>
+                    <li><a href="home.php">Home</a> </li>
                 </ul>
 
             </div>

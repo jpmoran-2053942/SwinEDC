@@ -1,3 +1,6 @@
+<?php 
+header("refresh:5; url=login.php"); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,11 +45,11 @@
     <h1 style="float: left">SwinEDC</h1>
     <div class="navbar">
         <ul class="navigationitems">
-            <li><a href="help.html">Help</a> </li>
+            <li><a href="help.php">Help</a> </li>
             <li><a href="mygroups.php">My groups</li>
             <li><a href="profile.html">Profile</a> </li>
             <li><a href="search.php">Search</a> </li>
-            <li><a href="home.html">Home</a> </li>
+            <li><a href="home.php">Home</a> </li>
         </ul>
     </div>
 </nav>
@@ -61,7 +64,8 @@
 		<!--Content-->
 		<section>
 		<h1> Registration Success! </h1>
-			<p> You have now been registerd. Please use the navigation bar to continue using the site. </p>
+			<p> You have now been registered. Please login to use the site.<br>
+			You will be redirected to the login page in 5 seconds.</p>
 		</section>
 	</div>
 	
@@ -71,11 +75,11 @@
 
             <div id="footer">
                 <ul >
-                    <li><a href="help.html">Help</a> </li>
+                    <li><a href="help.php">Help</a> </li>
 					<li><a href="mygroups.php">My groups</li>
 					<li><a href="profile.html">Profile</a> </li>
 					<li><a href="search.php">Search</a> </li>
-					<li><a href="home.html">Home</a> </li>
+					<li><a href="home.php">Home</a> </li>
                 </ul>
 
             </div>

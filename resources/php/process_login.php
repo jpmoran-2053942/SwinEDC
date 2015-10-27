@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	//Remove any potentially dangerous characters from inputs.
 	function sanatise_input($input) {
 		return htmlspecialchars(stripslashes(trim($input)));
@@ -6,6 +7,7 @@
 	
 	$username = sanatise_input($_POST["username"]);
 	$password = sanatise_input($_POST["password"]);
+	$_SESSION['sessionuser'] = $username;
 	
 	$error = "";
 	$usernamefound = false;
@@ -61,6 +63,7 @@
 	if ($error == "") {
 		//Needs to pass login data.
 		header("location:../../logincomplete.php");
+		exit();
 	} else {
 		//Passes the error message as a GET.
 		header("location:../../login.php?error=$error");
